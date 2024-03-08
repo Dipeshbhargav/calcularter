@@ -1,0 +1,95 @@
+import sys
+
+# Calculation history list
+history = []
+
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    if b == 0:
+        return "Error: Division by zero"
+    return a / b
+
+
+def display_history():
+    if not history:
+        print("History is empty.")
+    else:
+        print("Calculation History:")
+        for idx, calc in enumerate(history, start=1):
+            print(f"{idx}. {calc}")
+
+
+def main():
+    while True:
+        print("\nMenu:")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Show History")
+        print("6. Exit")
+
+        choice = input("Select an option: ")
+
+        if choice == '1':
+            try:
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
+                result = add(num1, num2)
+                history.append(f"{num1} + {num2} = {result}")
+                print("Result:", result)
+            except ValueError:
+                print("Invalid input. Please enter numbers.")
+        elif choice == '2':
+            try:
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
+                result = subtract(num1, num2)
+                history.append(f"{num1} - {num2} = {result}")
+                print("Result:", result)
+            except ValueError:
+                print("Invalid input. Please enter numbers.")
+        elif choice == '3':
+            try:
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
+                result = multiply(num1, num2)
+                history.append(f"{num1} * {num2} = {result}")
+                print("Result:", result)
+            except ValueError:
+                print("Invalid input. Please enter numbers.")
+        elif choice == '4':
+            try:
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
+                result = divide(num1, num2)
+                history.append(f"{num1} / {num2} = {result}")
+                print("Result:", result)
+            except ValueError:
+                print("Invalid input. Please enter numbers.")
+            except ZeroDivisionError:
+                print("Error: Division by zero")
+        elif choice == '5':
+            display_history()
+        elif choice == '6':
+            print("Exiting the calculator.")
+            sys.exit()
+        else:
+            print("Invalid choice. Please select a valid option.")
+
+
+if __name__ == "__main__":
+    main()
+
